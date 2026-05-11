@@ -1,23 +1,42 @@
+# cmake_minimum_required(VERSION 3.10)
+# project(AbsoluteCinema)
+
+# set(CMAKE_CXX_STANDARD 17)
+
+# set(UL_SDK_PATH "${CMAKE_CURRENT_SOURCE_DIR}/ui")
+
+# # Ini yang kurang — kasih tau CMake di mana Platform.cmake berada
+# list(APPEND CMAKE_MODULE_PATH "${UL_SDK_PATH}/samples/cmake")
+
+# include(Common)
+
+
+# add_app(AbsoluteCinema src/main.cpp)
+
+
+# cmake_minimum_required(VERSION 3.10)
+# project(Wordboxd)
+ 
+# set(CMAKE_CXX_STANDARD 17)
+ 
+# set(UL_SDK_PATH "${CMAKE_CURRENT_SOURCE_DIR}/ui")
+# list(APPEND CMAKE_MODULE_PATH "${UL_SDK_PATH}/samples/cmake")
+# include(Common)
+ 
+# add_app(Wordboxd src/main.cpp)
+
 cmake_minimum_required(VERSION 3.10)
-project(AbsoluteCinema)
+project(Wordboxd)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Ini yang diganti, disesuaikan dengan nama foldermu (ui)
-set(ULTRALIGHT_SDK_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ui")
+set(UL_SDK_PATH "${CMAKE_CURRENT_SOURCE_DIR}/ui")
+list(APPEND CMAKE_MODULE_PATH "${UL_SDK_PATH}/samples/cmake")
 
-# Include folder headers
-include_directories("${ULTRALIGHT_SDK_DIR}/include")
+# Override install dir: output ke dalam folder project, bukan C:/
+set(INSTALL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dist")
+set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/dist")
 
-# Tambahkan library yang mau di-link
-link_directories("${ULTRALIGHT_SDK_DIR}/lib")
+include(Common)
 
-add_executable(AbsoluteCinema src/main.cpp)
-
-# Link library utama Ultralight
-target_link_libraries(AbsoluteCinema 
-    Ultralight 
-    UltralightCore 
-    WebCore 
-    AppCore
-)
+add_app(Wordboxd src/main.cpp)
